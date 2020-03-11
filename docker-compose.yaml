@@ -1,0 +1,28 @@
+version: "3.4"
+services:
+  node-a:
+    build:
+      context: .
+    container_name: node-a
+    image: kubernetes_node
+    working_dir: /work
+    stdin_open: true
+    tty: true
+    privileged: true
+    volumes:
+    - .:/work
+  master-a:
+    container_name: master-a
+    build:
+      context: .
+    image: kubernetes_master
+    working_dir: /work
+    stdin_open: true
+    tty: true
+    privileged: true
+    volumes:
+    - .:/work
+    ports:
+    - 6443:6443
+  
+
